@@ -14,11 +14,12 @@ module.exports = app => {
 
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
-
+    console.log("REQ TEST", req.body)
+    console.log("TEST BODY", body)
     const survey = new Survey({
         title,
-        subject,
         body,
+        subject,
         recipients: recipients.split(',').map(email => ({ email:email.trim() })),
         _user: req.user.id,
         dateSent: Date.now()
@@ -26,7 +27,7 @@ module.exports = app => {
 
     // Great place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
-
+    console.log("TEST SURVEY", survey)
     try {
       await mailer.send();
       await survey.save();
