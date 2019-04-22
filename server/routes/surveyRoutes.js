@@ -25,7 +25,12 @@ module.exports = app => {
         }
       });
 
-      console.log(events);
+      const compactEvents = _.compact(events);
+      const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId');
+
+      console.log(uniqueEvents)
+
+      res.send({});
 
     });
 
