@@ -30,7 +30,7 @@ module.exports = app => {
           Survey.updateOne({
             _id: surveyId,
             recipients: {
-              $elemMatch: { email: email, reponded: false }
+              $elemMatch: { email: email, responded: false }
             }
           },
           {
