@@ -1,4 +1,4 @@
-function locltunnel {
+function localtunnel {
     lt -s dfsjalienoiwer --port 5000
 }
 until localtunnel; do

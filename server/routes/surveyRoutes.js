@@ -21,7 +21,7 @@ module.exports = app => {
         .map(({ email, url }) => {
           const match = p.test(new URL(url).pathname);
           if (match) {
-            return { email, surveryId: match.surveyId, choice: match.choice };
+            return { email, surveyId: match.surveyId, choice: match.choice };
           }
         })
         .compact()
